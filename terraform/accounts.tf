@@ -65,7 +65,7 @@ module "aft_deploy_account" {
   account_customizations_name = "aft-customizations"
 }
 
-module "polaris_runtime_dev" {
+module "polaris_dev" {
   source = "./modules/aft-account-request"
   control_tower_parameters = {
     AccountEmail              = "galani+dev@me.com"
