@@ -33,6 +33,12 @@ module "polaris_logging" {
   account_tags = {
     "Owner" = "Platform Team"
   }
+
+  change_management_parameters = {
+    change_reason       = "Adding the logging account"
+    change_requested_by = "Alex Galani"
+  }
+
   account_customizations_name = "logging-customizations"
 }
 
@@ -46,16 +52,38 @@ module "aft_deploy_account" {
     SSOUserFirstName          = "Alex"
     SSOUserLastName           = "Galani"
   }
+
+  account_tags = {
+    "Owner" = "Platform Team"
+  }
+
+  change_management_parameters = {
+    change_reason       = "Adding the AFT deploy account"
+    change_requested_by = "Alex Galani"
+  }
+
+  account_customizations_name = "aft-customizations"
 }
 
 module "polaris_runtime_dev" {
   source = "./modules/aft-account-request"
   control_tower_parameters = {
     AccountEmail              = "galani+dev@me.com"
-    AccountName               = "runtime-dev"
+    AccountName               = "polaris-dev"
     ManagedOrganizationalUnit = "NonSensitive"
     SSOUserEmail              = "galani@me.com"
     SSOUserFirstName          = "Alex"
     SSOUserLastName           = "Galani"
   }
+
+  account_tags = {
+    "Owner" = "Platform Team"
+  }
+
+  change_management_parameters = {
+    change_reason       = "Adding the polaris-dev account"
+    change_requested_by = "Alex Galani"
+  }
+
+  account_customizations_name = "polaris-dev-customizations"
 }
