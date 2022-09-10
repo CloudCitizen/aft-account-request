@@ -17,7 +17,7 @@ module "polaris_audit" {
     change_requested_by = "Alex Galani"
   }
 
-  account_customizations_name = "audit-customizations"
+  account_customizations_name = "audit"
 }
 
 module "polaris_logging" {
@@ -39,7 +39,7 @@ module "polaris_logging" {
     change_requested_by = "Alex Galani"
   }
 
-  account_customizations_name = "logging-customizations"
+  account_customizations_name = "audit"
 }
 
 module "aft_deploy_account" {
@@ -62,7 +62,7 @@ module "aft_deploy_account" {
     change_requested_by = "Alex Galani"
   }
 
-  account_customizations_name = "aft-customizations"
+  account_customizations_name = "deploy"
 }
 
 module "polaris_runtime_dev" {
@@ -85,5 +85,28 @@ module "polaris_runtime_dev" {
     change_requested_by = "Alex Galani"
   }
 
-  account_customizations_name = "polaris-dev-customizations"
+  account_customizations_name = "nonprod"
+}
+
+module "polaris_shared_networking" {
+  source = "./modules/aft-account-request"
+  control_tower_parameters = {
+    AccountEmail              = "galani+shared_networking@me.com"
+    AccountName               = "polaris-shared-networking"
+    ManagedOrganizationalUnit = "NonSensitive"
+    SSOUserEmail              = "galani@me.com"
+    SSOUserFirstName          = "Alex"
+    SSOUserLastName           = "Galani"
+  }
+
+  account_tags = {
+    "Owner" = "Platform Team"
+  }
+
+  change_management_parameters = {
+    change_reason       = "Adding the polaris-shared-networking account"
+    change_requested_by = "Alex Galani"
+  }
+
+  account_customizations_name = "shared"
 }
