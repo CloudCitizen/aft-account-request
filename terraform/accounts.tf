@@ -110,3 +110,27 @@ module "polaris_shared_networking" {
 
   account_customizations_name = "shared"
 }
+  
+module "new_sandbox_account" {
+  source = "./modules/aft-account-request"
+  control_tower_parameters = {
+    AccountEmail              = "galani+sandbox_account@me.com"
+    AccountName               = "new-sandbox-account"
+    ManagedOrganizationalUnit = "NonSensitive"
+    SSOUserEmail              = "galani@me.com"
+    SSOUserFirstName          = "Alex"
+    SSOUserLastName           = "Galani"
+  }
+
+  account_tags = {
+    "Owner" = "Platform Team"
+  }
+
+  change_management_parameters = {
+    change_reason       = "Adding the sandbox account"
+    change_requested_by = "Alex Galani"
+  }
+
+  account_customizations_name = "shared"
+}
+
