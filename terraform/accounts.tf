@@ -110,3 +110,27 @@ module "polaris_shared_networking" {
 
   account_customizations_name = "shared"
 }
+
+
+module "polaris_demo" {
+  source = "./modules/aft-account-request"
+  control_tower_parameters = {
+    AccountEmail              = "galani+demo@me.com"
+    AccountName               = "polaris-demo"
+    ManagedOrganizationalUnit = "NonSensitive"
+    SSOUserEmail              = "galani@me.com"
+    SSOUserFirstName          = "Alex"
+    SSOUserLastName           = "Galani"
+  }
+
+  account_tags = {
+    "Owner" = "Platform Team"
+  }
+
+  change_management_parameters = {
+    change_reason       = "Adding the polaris-demo account"
+    change_requested_by = "Alex Galani"
+  }
+
+  account_customizations_name = "nonprod"
+}
